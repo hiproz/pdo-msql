@@ -1,6 +1,8 @@
 # pdo-msql
 a branch of PDO_MYSQL-1.0.2,make little change for the building
 
+[PDO_MYSQL-1.0.2 original code download](http://pecl.php.net/get/PDO_MYSQL-1.0.2.tgz)
+
 for the original source code you shoul buld as:
 ```
 phpize
