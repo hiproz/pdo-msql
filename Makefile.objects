@@ -1,0 +1,12 @@
+pdo_mysql.lo: /data/php/PDO_MYSQL-1.0.2/pdo_mysql.c
+	$(LIBTOOL) --mode=compile $(CC) -I -I/usr/include/mysql -I. -I/data/php/PDO_MYSQL-1.0.2 $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /data/php/PDO_MYSQL-1.0.2/pdo_mysql.c -o pdo_mysql.lo 
+mysql_driver.lo: /data/php/PDO_MYSQL-1.0.2/mysql_driver.c
+	$(LIBTOOL) --mode=compile $(CC) -I -I/usr/include/mysql -I. -I/data/php/PDO_MYSQL-1.0.2 $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /data/php/PDO_MYSQL-1.0.2/mysql_driver.c -o mysql_driver.lo 
+mysql_statement.lo: /data/php/PDO_MYSQL-1.0.2/mysql_statement.c
+	$(LIBTOOL) --mode=compile $(CC) -I -I/usr/include/mysql -I. -I/data/php/PDO_MYSQL-1.0.2 $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /data/php/PDO_MYSQL-1.0.2/mysql_statement.c -o mysql_statement.lo 
+$(phplibdir)/pdo_mysql.la: ./pdo_mysql.la
+	$(LIBTOOL) --mode=install cp ./pdo_mysql.la $(phplibdir)
+
+./pdo_mysql.la: $(shared_objects_pdo_mysql) $(PDO_MYSQL_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_pdo_mysql) $(PDO_MYSQL_SHARED_LIBADD)
+
